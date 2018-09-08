@@ -9,6 +9,9 @@ use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Api\StockStateInterface;
 use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\QuoteItemQtyList;
 
+/**
+ * Class for initialize quote item options.
+ */
 class Option
 {
     /**
@@ -67,10 +70,6 @@ class Option
          * define that stock item is child for composite product
          */
         $stockItem->setIsChildItem(true);
-        /**
-         * don't check qty increments value for option product
-         */
-        $stockItem->setSuppressCheckQtyIncrements(true);
 
         return $stockItem;
     }
@@ -132,6 +131,8 @@ class Option
         }
 
         $stockItem->unsIsChildItem();
+
+        $option->setStockStateResult($result);
 
         return $result;
     }
